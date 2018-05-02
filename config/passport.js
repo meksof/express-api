@@ -3,6 +3,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const passportJwt = require('passport-jwt');
 const User = require('../models/User');
+
 module.exports = function (passport) {
 
     /**
