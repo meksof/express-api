@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SOCIAL LOGIN APP</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <style>
+        .muted {
+            color: rgb(177, 177, 177);
+        }
+
+        .fz-32 {
+            font-size: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>SOCIAL LOGIN APP</h1>
+        <div class="well">
+            A REST api boilerplate project, using expressjs, mongodb, passport and jsongwebtoken.
+            <a href="https://github.com/meksof/express-api">github.com/meksof/express-api</a>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Demo</h2>
+                <p>Please login if your not logged in yet !!!</p>
+                <h3>Using Social Network accounts</h2>
+                    <ul>
+                        <li>
+                            <a href="/api/auth/facebook">FACEBOOK</a>
+                        </li>
+                        <li>
+                            <a href="/api/auth/google">GOOGLE</a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <span class="muted fz-32">OR</span>
+                    <h3>Local login form</h3>
+                    <form class="form" action="/api/auth/login" method="post">
+                        <p class="form-group">
+                            <label for="email">
+                                <input type="email" id="email" name="email" placeholder="Your email" class="form-control">
+                            </label>
+                            <label for="password">
+                                <input type="password" id="password" name="password" placeholder="Your password" class="form-control">
+                            </label>
+                        </p>
+                        <p class="form-group">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </p>
+                    </form>
+            </div>
+            <div class="col-md-6">
+                <h2>How to use the api?</h2>
+                <h4>Authentications endpoints:</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Description</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>
+                                <code>/api/auth/[provider]</code>
+                            </td>
+                            <td>
+                                Where [provider] should be replace by
+                                <b>"facebook"</b> or
+                                <b>"google"</b>
+                                <br> Once the user has logged in and authorized the app through [provider] website, server should return a <code>200 OK</code> status code response with the token.
+                                <br> Ex:
+                                <br>
+                                <code>
+                                    {<br>
+                                    &nbsp;&nbsp;"auth": true,<br>
+                                    &nbsp;&nbsp;"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." <br>
+                                    }
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>
+                                <code>/api/auth/register</code>
+                            </td>
+                            <td>
+                                Register a new user with some given info.
+                                <br> Request body should contain the following fields:
+                                <ul>
+                                    <li>
+                                        <b>name</b>
+                                    </li>
+                                    <li>
+                                        <b>email</b>
+                                    </li>
+                                    <li>
+                                        <b>password</b>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>
+                                <code>/api/auth/login</code>
+                            </td>
+                            <td>
+                                Login an existing user.
+                                <br> Request body should contain the following fields:
+                                <ul>
+
+                                    <li>
+                                        <b>email</b>
+                                    </li>
+                                    <li>
+                                        <b>password</b>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Users endpoints:</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Description</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>
+                                <code>/api/users</code>
+                            </td>
+                            <td>
+                                Get a list of all users in response.
+                                <br> Ex:
+                                <br>
+                                <code>
+                                    [{<br>
+                                    &nbsp;&nbsp;"_id": "5ada09f7da2d163528cee5c2"<br>
+                                    &nbsp;&nbsp;"name": "test"<br>
+                                    &nbsp;&nbsp;"email": "test@email.com" <br>
+                                    &nbsp;&nbsp;"providerType": "local", <br>
+                                    &nbsp;&nbsp;"profile": { <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"username": "", <br>
+                                    &nbsp;&nbsp;} <br>
+                                    },{<br>
+                                        &nbsp;&nbsp;"profile": { <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;"id": "117024279514409934901", <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;"displayName": "Test name", <br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;"avatarUrl": "https://photo.google.com/photo.jpg?sz=50" <br>
+                                            &nbsp;&nbsp;}, <br>
+                                        &nbsp;&nbsp;"_id": "5ada0a79da2d163528cee5c3", <br>
+                                        &nbsp;&nbsp;"name": "Test name", <br>
+                                        &nbsp;&nbsp;"email": "test@gmail.com", <br>
+                                        &nbsp;&nbsp;"providerType": "google"<br>
+                                    }]
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>
+                                <code>/api/users/[id]</code>
+                            </td>
+                            <td>Gets a single user with the given
+                                <b>[id]</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>
+                                <code>/api/users/me</code>
+                            </td>
+                            <td>
+                                Get user info based on the provided token. <br>
+                                One example output:
+                                <code>
+                                { <br>
+                                &nbsp;&nbsp;"_id": "5ada09f7da2d163528cee5c2", <br>
+                                &nbsp;&nbsp;"name": "Sofiene Meksi", <br>
+                                &nbsp;&nbsp;"email": "local@gmail.com", <br>
+                                &nbsp;&nbsp;"providerType": "local" <br>
+                                }
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>
+                                <code>/api/users/[id]</code>
+                            </td>
+                            <td>
+                                Update a user with the given
+                                <b>[id]</b>.
+                                <br> Body request should contain fields that will be changed, otherwise not mentioned fields
+                                will remain intact. Ex:
+                                <ul>
+                                    <li>
+                                        <b>name</b>: "test"<br>
+                                    </li>
+                                    <li>
+                                        <b>email</b>: "test@email.com" <br>
+                                    </li>
+                                </ul>
+                                One possible response should be like: <br>
+                                <code>
+                                    { <br>
+                                    &nbsp;&nbsp;"_id": "5ada09f7da2d163528cee5c2", <br>
+                                    &nbsp;&nbsp;"name": "Test name", <br>
+                                    &nbsp;&nbsp;"email": "local@email.com", <br>
+                                    &nbsp;&nbsp;"providerType": "local" <br>
+                                    }
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>
+                                <code>/api/users/[id]</code>
+                            </td>
+                            <td>
+                                Delete user with [id]. <br>
+                                A <code>200 OK</code> response status should be returned with a body of:
+                                "User test was deleted."
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
