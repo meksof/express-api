@@ -21,7 +21,7 @@ router.post('/login', function (req, res) {
     }
     User.findOne({ email: req.body.email, providerType: "local"}, function (err, user) {
         if (err) return res.status(500).send({ error: true, message: 'Error on the server.'});
-        if (!user) return res.status(404).send({ error: true, message: 'No user found.'});
+        if (!user) return res.status(404).send({ error: true, message: 'Your email or password are invalid.'});
 
         // Validate password
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
