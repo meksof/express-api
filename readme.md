@@ -10,10 +10,12 @@ If you are planning to make an API without wasting time making authentication pr
 
 ## Architecture
 
-Social login
+<p style="text-align: center;">Social Login</p>
+
 ![Social login authentication workflow](https://start-express-api.herokuapp.com/assets/img/social-auth-workflow-min.png)
 
-Local login
+<p style="text-align: center;">Local Login</p>
+
 ![Local login authentication workflow](https://start-express-api.herokuapp.com/assets/img/local-auth-workflow-min.png)
 
 ## Configuration
