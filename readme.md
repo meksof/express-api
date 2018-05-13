@@ -1,6 +1,7 @@
 # EXPRESS API
 
-A REST api boilerplate project, using expressjs, mongodb, passport and jsongwebtoken
+A REST api boilerplate project, using expressjs, mongodb, passport and jsongwebtoken.
+Check the [demo](https://start-express-api.herokuapp.com/).
 
 ## Purpose
 
