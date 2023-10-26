@@ -1,11 +1,12 @@
 # EXPRESS API
 
-A REST api boilerplate project, using expressjs, mongodb, passport and jsongwebtoken.
+A RESTful api, with a ready to use authentication process.
+
 Check the [demo](https://start-express-api.herokuapp.com/).
 
-## Purpose
+## Why ?
 
-The goal for this project is to provide website developers with one ready to use expressjs API with social login.
+The goal for this project is to provide backend developers with one ready to use expressjs API with social login.
 If you are planning to make an API without wasting time making authentication process, this is where you should start.
 
 ## Architecture
