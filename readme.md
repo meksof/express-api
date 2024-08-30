@@ -13,11 +13,11 @@ If you are planning to make an API without wasting time making authentication pr
 
 <p style="text-align: center;">Social Login</p>
 
-![Social login authentication workflow](https://start-express-api.herokuapp.com/assets/img/social-auth-workflow-min.png)
+![Social login authentication workflow](/social-auth-workflow-min.png)
 
 <p style="text-align: center;">Local Login</p>
 
-![Local login authentication workflow](https://start-express-api.herokuapp.com/assets/img/local-auth-workflow-min.png)
+![Local login authentication workflow](/local-auth-workflow-min.png)
 
 ## Configuration
 
